@@ -1,0 +1,14 @@
+{
+  "input": {
+    "type": "alias",
+    "timestamp": "2014",
+    "previousId": "previous-id",
+    "userId": "user-id",
+    "context": { "ip": "0.0.0.0" }
+  },
+  "output": {
+    "messages": [{
+      "body": "{\"type\":\"alias\",\"timestamp\":\"2014-01-01T00:00:00.000Z\",\"previousId\":\"previous-id\",\"userId\":\"user-id\",\"context\":{\"ip\":\"0.0.0.0\"}}"
+    }]
+  }
+}

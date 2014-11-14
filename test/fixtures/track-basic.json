@@ -1,0 +1,15 @@
+{
+  "input": {
+    "type": "track",
+    "timestamp": "2014",
+    "event": "my-event",
+    "userId": "user-id",
+    "properties": { "property": true },
+    "context": { "ip": "0.0.0.0" }
+  },
+  "output": {
+    "messages": [{
+      "body": "{\"type\":\"track\",\"timestamp\":\"2014-01-01T00:00:00.000Z\",\"event\":\"my-event\",\"userId\":\"user-id\",\"properties\":{\"property\":true},\"context\":{\"ip\":\"0.0.0.0\"}}"
+    }]
+  }
+}
