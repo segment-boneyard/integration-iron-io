@@ -1,8 +1,8 @@
-[![Build Status](https://circleci.com/gh/segmentio/integration-iron-io.png)](https://circleci.com/gh/segmentio/integration-iron-io)
+[![Build Status](https://circleci.com/gh/segmentio/integration-iron-io/tree/master.png?style=badge)](https://circleci.com/gh/segmentio/integration-iron-io/tree/master)
 
-# Iron.io server-side integration.
+# integration-iron-io
 
-Write me...
+Iron.io server-side integration for Segment.
 
 
 ## License
