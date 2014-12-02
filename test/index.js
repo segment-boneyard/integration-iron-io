@@ -32,8 +32,7 @@ describe('Iron IO', function(){
       .endpoint('https://mq-aws-us-east-1.iron.io:443')
       .channels(['server', 'mobile', 'client'])
       .ensure('settings.projectId')
-      .ensure('settings.token')
-      .retries(2)
+      .ensure('settings.token');
   });
 
   describe('.validate()', function(){
