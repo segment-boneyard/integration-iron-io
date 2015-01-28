@@ -16,7 +16,8 @@ describe('Iron IO', function(){
   beforeEach(function(){
     settings = {
       projectId: '534bf145c629690009000039',
-      token: 'uwa4ZE1ykvC5aHgsrkC2HAPJw2o'
+      token: 'uwa4ZE1ykvC5aHgsrkC2HAPJw2o',
+      endpoint: 'https://mq-aws-us-east-1.iron.io:443'
     };
     iron = new IronIO(settings);
     test = Test(iron, __dirname);
@@ -29,10 +30,10 @@ describe('Iron IO', function(){
   it('should have the correct settings', function(){
     test
       .name('Iron.io')
-      .endpoint('https://mq-aws-us-east-1.iron.io:443')
       .channels(['server', 'mobile', 'client'])
       .ensure('settings.projectId')
-      .ensure('settings.token');
+      .ensure('settings.token')
+      .ensure('settings.endpoint');
   });
 
   describe('.validate()', function(){
@@ -42,6 +43,10 @@ describe('Iron IO', function(){
     });
 
     it('should be invalid when .projectId is missing', function(){
+      delete settings.projectId;
+      test.invalid({}, settings);
+    });
+    it('should be invalid when .endpoint is missing', function(){
       delete settings.projectId;
       test.invalid({}, settings);
     });
