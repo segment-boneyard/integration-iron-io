@@ -292,7 +292,7 @@ describe('Iron IO v3', function(){
         .set(settings)
         .track(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -310,7 +310,7 @@ describe('Iron IO v3', function(){
         .set(settings)
         .identify(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -328,7 +328,7 @@ describe('Iron IO v3', function(){
         .set(settings)
         .screen(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -346,7 +346,7 @@ describe('Iron IO v3', function(){
         .set(settings)
         .page(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -364,7 +364,7 @@ describe('Iron IO v3', function(){
         .set(settings)
         .alias(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
