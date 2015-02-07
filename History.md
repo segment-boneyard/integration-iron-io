@@ -1,4 +1,10 @@
 
+1.0.7 / 2015-02-06
+==================
+
+ * Merge pull request #4 from segmentio/fix/v3-tests
+ * Fix response code assertions for v3
+
 1.0.6 / 2015-02-07
 ==================
 
