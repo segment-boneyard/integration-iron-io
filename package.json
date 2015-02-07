@@ -1,6 +1,6 @@
 {
   "name": "integration-iron-io",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "Iron.io server-side integration",
   "author": "Segment <friends@segment.com>",

@@ -1,4 +1,10 @@
 
+1.0.6 / 2015-02-07
+==================
+
+  * add api version for version 3 ironmq endpoint
+  * require endpoint to explicitly be declared
+
 1.0.5 / 2014-12-08
 ==================
 
