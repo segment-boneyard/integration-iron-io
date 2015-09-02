@@ -1,0 +1,19 @@
+{
+  "input": {
+    "type": "group",
+    "groupId": "0ba10cd6f6a6f654dbacbeee71cdf235",
+    "timestamp": "2014",
+    "event": "my-event",
+    "userId": "user-id",
+    "traits": {
+    	"name": "Company Name",
+    	"email": "jd@example.com"
+    },
+    "context": { "ip": "0.0.0.0" }
+  },
+  "output": {
+    "messages": [{
+      "body": "{\"type\":\"group\",\"groupId\":\"0ba10cd6f6a6f654dbacbeee71cdf235\",\"timestamp\":\"2014-01-01T00:00:00.000Z\",\"event\":\"my-event\",\"userId\":\"user-id\",\"traits\":{\"name\":\"Company Name\",\"email\":\"jd@example.com\"},\"context\":{\"ip\":\"0.0.0.0\"}}"
+    }]
+  }
+}
