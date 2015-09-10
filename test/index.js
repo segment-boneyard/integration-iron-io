@@ -94,6 +94,12 @@ describe('Iron IO v2', function(){
         test.maps('page-basic');
       });
     });
+
+    describe('group', function(){
+      it('should map basic group', function(){
+        test.maps('group-basic');
+      });
+    });
   });
 
   describe('.track()', function(){
@@ -182,6 +188,24 @@ describe('Iron IO v2', function(){
       test
         .set({ token: 'x' })
         .alias({})
+        .error(error, done);
+    });
+  });
+
+  describe('.group()', function(){
+    it('should be able to group correctly', function(done){
+      var msg = helpers.group();
+      test
+        .set(settings)
+        .group(msg)
+        .sends(message(msg))
+        .expects(200, done);
+    });
+
+    it('should error on invalid creds', function(done){
+      test
+        .set({ token: 'x' })
+        .group({})
         .error(error, done);
     });
   });
@@ -283,6 +307,12 @@ describe('Iron IO v3', function(){
         test.maps('page-basic');
       });
     });
+
+    describe('group', function(){
+      it('should map basic group', function(){
+        test.maps('group-basic');
+      });
+    });
   });
 
   describe('.track()', function(){
@@ -371,6 +401,24 @@ describe('Iron IO v3', function(){
       test
         .set({ token: 'x' })
         .alias({})
+        .error(error, done);
+    });
+  });
+
+  describe('.group()', function(){
+    it('should be able to group correctly', function(done){
+      var msg = helpers.group();
+      test
+        .set(settings)
+        .group(msg)
+        .sends(message(msg))
+        .expects(201, done);
+    });
+
+    it('should error on invalid creds', function(done){
+      test
+        .set({ token: 'x' })
+        .group({})
         .error(error, done);
     });
   });
