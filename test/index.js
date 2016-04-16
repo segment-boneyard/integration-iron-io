@@ -1,19 +1,17 @@
+'use strict';
 
 var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
-var facade = require('segmentio-facade');
 var fmt = require('util').format;
-var should = require('should');
-var assert = require('assert');
 var IronIO = require('..');
 
-describe('Iron IO v2', function(){
+describe('Iron IO v2', function() {
   var settings;
   var iron;
   var test;
   var error;
 
-  beforeEach(function(){
+  beforeEach(function() {
     //
     settings = {
       projectId: '534bf145c629690009000039',
@@ -25,11 +23,11 @@ describe('Iron IO v2', function(){
     test = Test(iron, __dirname);
   });
 
-  beforeEach(function(){
+  beforeEach(function() {
     error = fmt('cannot POST /1/projects/%s/queues/segment/messages?oauth=x (401)', settings.projectId);
-  })
+  });
 
-  it('should have the correct settings', function(){
+  it('should have the correct settings', function() {
     test
       .name('Iron.io')
       .channels(['server', 'mobile', 'client'])
@@ -38,72 +36,72 @@ describe('Iron IO v2', function(){
       .ensure('settings.endpoint');
   });
 
-  describe('.validate()', function(){
-    it('should be invalid when .token is missing', function(){
+  describe('.validate()', function() {
+    it('should be invalid when .token is missing', function() {
       delete settings.token;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .projectId is missing', function(){
+    it('should be invalid when .projectId is missing', function() {
       delete settings.projectId;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .endpoint is missing', function(){
+    it('should be invalid when .endpoint is missing', function() {
       delete settings.endpoint;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .endpoint is missing', function(){
+    it('should be invalid when .endpoint is missing', function() {
       delete settings.apiVersion;
       test.invalid({}, settings);
     });
 
-    it('should be vaild when both .projectId, .token, endpoint, and api version are given', function(){
+    it('should be vaild when both .projectId, .token, endpoint, and api version are given', function() {
       test.valid({}, settings);
     });
   });
 
-  describe('mapper', function(){
-    describe('identify', function(){
-      it('should map basic identify', function(){
+  describe('mapper', function() {
+    describe('identify', function() {
+      it('should map basic identify', function() {
         test.maps('identify-basic');
       });
     });
 
-    describe('screen', function(){
-      it('should map basic screen', function(){
+    describe('screen', function() {
+      it('should map basic screen', function() {
         test.maps('screen-basic');
       });
     });
 
-    describe('alias', function(){
-      it('should map basic alias', function(){
+    describe('alias', function() {
+      it('should map basic alias', function() {
         test.maps('alias-basic');
       });
     });
 
-    describe('track', function(){
-      it('should map basic track', function(){
+    describe('track', function() {
+      it('should map basic track', function() {
         test.maps('track-basic');
       });
     });
 
-    describe('page', function(){
-      it('should map basic page', function(){
+    describe('page', function() {
+      it('should map basic page', function() {
         test.maps('page-basic');
       });
     });
 
-    describe('group', function(){
-      it('should map basic group', function(){
+    describe('group', function() {
+      it('should map basic group', function() {
         test.maps('group-basic');
       });
     });
   });
 
-  describe('.track()', function(){
-    it('should track correctly', function(done){
+  describe('.track()', function() {
+    it('should track correctly', function(done) {
       var msg = helpers.track();
       test
         .set(settings)
@@ -112,7 +110,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .track({})
@@ -120,8 +118,8 @@ describe('Iron IO v2', function(){
     });
   });
 
-  describe('.identify()', function(){
-    it('should be able to identify correctly', function(done){
+  describe('.identify()', function() {
+    it('should be able to identify correctly', function(done) {
       var msg = helpers.identify();
       test
         .set(settings)
@@ -130,7 +128,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .identify({})
@@ -138,8 +136,8 @@ describe('Iron IO v2', function(){
     });
   });
 
-  describe('.screen()', function(){
-    it('should be able to screen correctly', function(done){
+  describe('.screen()', function() {
+    it('should be able to screen correctly', function(done) {
       var msg = helpers.screen();
       test
         .set(settings)
@@ -148,7 +146,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .screen({})
@@ -156,8 +154,8 @@ describe('Iron IO v2', function(){
     });
   });
 
-  describe('.page()', function(){
-    it('should be able to page correctly', function(done){
+  describe('.page()', function() {
+    it('should be able to page correctly', function(done) {
       var msg = helpers.page();
       test
         .set(settings)
@@ -166,7 +164,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .page({})
@@ -174,8 +172,8 @@ describe('Iron IO v2', function(){
     });
   });
 
-  describe('.alias()', function(){
-    it('should be able to alias correctly', function(done){
+  describe('.alias()', function() {
+    it('should be able to alias correctly', function(done) {
       var msg = helpers.alias();
       test
         .set(settings)
@@ -184,7 +182,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .alias({})
@@ -192,8 +190,8 @@ describe('Iron IO v2', function(){
     });
   });
 
-  describe('.group()', function(){
-    it('should be able to group correctly', function(done){
+  describe('.group()', function() {
+    it('should be able to group correctly', function(done) {
       var msg = helpers.group();
       test
         .set(settings)
@@ -202,7 +200,7 @@ describe('Iron IO v2', function(){
         .expects(200, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .group({})
@@ -210,7 +208,7 @@ describe('Iron IO v2', function(){
     });
   });
 
-  function message(msg){
+  function message(msg) {
     return {
       messages: [
         { body: JSON.stringify(msg.json()) }
@@ -219,15 +217,13 @@ describe('Iron IO v2', function(){
   }
 });
 
-
-
-describe('Iron IO v3', function(){
+describe('Iron IO v3', function() {
   var settings;
   var iron;
   var test;
   var error;
 
-  beforeEach(function(){
+  beforeEach(function() {
     settings = {
       projectId: '54c96901ccd9880007000005',
       token: 'ao3ab3hkFkiP270d4rTf',
@@ -238,11 +234,11 @@ describe('Iron IO v3', function(){
     test = Test(iron, __dirname);
   });
 
-  beforeEach(function(){
+  beforeEach(function() {
     error = fmt('cannot POST /3/projects/%s/queues/segment/messages?oauth=x (401)', settings.projectId);
-  })
+  });
 
-  it('should have the correct settings', function(){
+  it('should have the correct settings', function() {
     test
       .name('Iron.io')
       .channels(['server', 'mobile', 'client'])
@@ -251,72 +247,72 @@ describe('Iron IO v3', function(){
       .ensure('settings.endpoint');
   });
 
-  describe('.validate()', function(){
-    it('should be invalid when .token is missing', function(){
+  describe('.validate()', function() {
+    it('should be invalid when .token is missing', function() {
       delete settings.token;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .projectId is missing', function(){
+    it('should be invalid when .projectId is missing', function() {
       delete settings.projectId;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .endpoint is missing', function(){
+    it('should be invalid when .endpoint is missing', function() {
       delete settings.endpoint;
       test.invalid({}, settings);
     });
 
-    it('should be invalid when .endpoint is missing', function(){
+    it('should be invalid when .endpoint is missing', function() {
       delete settings.apiVersion;
       test.invalid({}, settings);
     });
 
-    it('should be vaild when both .projectId, .token, endpoint, and api version are given', function(){
+    it('should be vaild when both .projectId, .token, endpoint, and api version are given', function() {
       test.valid({}, settings);
     });
   });
 
-  describe('mapper', function(){
-    describe('identify', function(){
-      it('should map basic identify', function(){
+  describe('mapper', function() {
+    describe('identify', function() {
+      it('should map basic identify', function() {
         test.maps('identify-basic');
       });
     });
 
-    describe('screen', function(){
-      it('should map basic screen', function(){
+    describe('screen', function() {
+      it('should map basic screen', function() {
         test.maps('screen-basic');
       });
     });
 
-    describe('alias', function(){
-      it('should map basic alias', function(){
+    describe('alias', function() {
+      it('should map basic alias', function() {
         test.maps('alias-basic');
       });
     });
 
-    describe('track', function(){
-      it('should map basic track', function(){
+    describe('track', function() {
+      it('should map basic track', function() {
         test.maps('track-basic');
       });
     });
 
-    describe('page', function(){
-      it('should map basic page', function(){
+    describe('page', function() {
+      it('should map basic page', function() {
         test.maps('page-basic');
       });
     });
 
-    describe('group', function(){
-      it('should map basic group', function(){
+    describe('group', function() {
+      it('should map basic group', function() {
         test.maps('group-basic');
       });
     });
   });
 
-  describe('.track()', function(){
-    it('should track correctly', function(done){
+  describe('.track()', function() {
+    it('should track correctly', function(done) {
       var msg = helpers.track();
       test
         .set(settings)
@@ -325,7 +321,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .track({})
@@ -333,8 +329,8 @@ describe('Iron IO v3', function(){
     });
   });
 
-  describe('.identify()', function(){
-    it('should be able to identify correctly', function(done){
+  describe('.identify()', function() {
+    it('should be able to identify correctly', function(done) {
       var msg = helpers.identify();
       test
         .set(settings)
@@ -343,7 +339,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .identify({})
@@ -351,8 +347,8 @@ describe('Iron IO v3', function(){
     });
   });
 
-  describe('.screen()', function(){
-    it('should be able to screen correctly', function(done){
+  describe('.screen()', function() {
+    it('should be able to screen correctly', function(done) {
       var msg = helpers.screen();
       test
         .set(settings)
@@ -361,7 +357,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .screen({})
@@ -369,8 +365,8 @@ describe('Iron IO v3', function(){
     });
   });
 
-  describe('.page()', function(){
-    it('should be able to page correctly', function(done){
+  describe('.page()', function() {
+    it('should be able to page correctly', function(done) {
       var msg = helpers.page();
       test
         .set(settings)
@@ -379,7 +375,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .page({})
@@ -387,8 +383,8 @@ describe('Iron IO v3', function(){
     });
   });
 
-  describe('.alias()', function(){
-    it('should be able to alias correctly', function(done){
+  describe('.alias()', function() {
+    it('should be able to alias correctly', function(done) {
       var msg = helpers.alias();
       test
         .set(settings)
@@ -397,7 +393,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .alias({})
@@ -405,8 +401,8 @@ describe('Iron IO v3', function(){
     });
   });
 
-  describe('.group()', function(){
-    it('should be able to group correctly', function(done){
+  describe('.group()', function() {
+    it('should be able to group correctly', function(done) {
       var msg = helpers.group();
       test
         .set(settings)
@@ -415,7 +411,7 @@ describe('Iron IO v3', function(){
         .expects(201, done);
     });
 
-    it('should error on invalid creds', function(done){
+    it('should error on invalid creds', function(done) {
       test
         .set({ token: 'x' })
         .group({})
@@ -423,7 +419,7 @@ describe('Iron IO v3', function(){
     });
   });
 
-  function message(msg){
+  function message(msg) {
     return {
       messages: [
         { body: JSON.stringify(msg.json()) }
