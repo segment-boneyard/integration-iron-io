@@ -2,7 +2,6 @@
 var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
 var facade = require('segmentio-facade');
-var fmt = require('util').format;
 var should = require('should');
 var assert = require('assert');
 var IronIO = require('..');
@@ -26,7 +25,7 @@ describe('Iron IO v2', function(){
   });
 
   beforeEach(function(){
-    error = fmt('cannot POST /1/projects/%s/queues/segment/messages?oauth=x (401)', settings.projectId);
+    error = 'Unauthorized';
   })
 
   it('should have the correct settings', function(){
@@ -239,7 +238,7 @@ describe('Iron IO v3', function(){
   });
 
   beforeEach(function(){
-    error = fmt('cannot POST /3/projects/%s/queues/segment/messages?oauth=x (401)', settings.projectId);
+    error = 'Unauthorized';
   })
 
   it('should have the correct settings', function(){
