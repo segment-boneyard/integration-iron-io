@@ -13,7 +13,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "segmentio-integration": "^5.0.1"
+    "segmentio-integration": "^5.1.0"
   },
   "devDependencies": {
     "@segment/eslint-config": "^3.4.0",
