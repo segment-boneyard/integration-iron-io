@@ -9,7 +9,7 @@ dependencies:
   pre:
     - npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
   override:
-    - make install
+    - make node_modules
 
 test:
   override:
@@ -21,4 +21,3 @@ deployment:
     commands:
       - curl -sLu "$HTTP_AUTH:" https://raw.githubusercontent.com/segmentio/scripts/master/circle/docker/build.sh | sh
       - npm publish --access=restricted
-
