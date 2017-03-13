@@ -6,9 +6,10 @@ GREP ?=.
 default: node_modules test-style test-cov
 
 node_modules: package.json
-	@npm install 
+	@npm install
+	touch $@
 
-test:
+test: node_modules
 	@TZ=UTC ./node_modules/.bin/mocha $(TESTS) \
 		--timeout 20000 \
 		--require should \
@@ -16,7 +17,7 @@ test:
 		--inline-diffs \
 		--grep "$(GREP)"
 
-test-cov:
+test-cov: node_modules
 	@TZ=UTC ./node_modules/.bin/istanbul cover \
 	  node_modules/.bin/_mocha -- $(TESTS) \
 			--timeout 20s \
@@ -25,7 +26,7 @@ test-cov:
 			--inline-diffs \
 			--ui exports
 
-test-style:
+test-style: node_modules
 	@node_modules/.bin/jscs lib test
 
 clean:
