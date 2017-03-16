@@ -17,7 +17,6 @@ describe('Iron IO v3', function(){
       projectId: '54c96901ccd9880007000005',
       token: 'ao3ab3hkFkiP270d4rTf',
       endpoint: 'http://mq-v3-aws-us-east-1.iron.io',
-      apiVersion: '3'
     };
     iron = new IronIO(settings);
     test = Test(iron, __dirname);
@@ -49,11 +48,6 @@ describe('Iron IO v3', function(){
 
     it('should be invalid when .endpoint is missing', function(){
       delete settings.endpoint;
-      test.invalid({}, settings);
-    });
-
-    it('should be invalid when .endpoint is missing', function(){
-      delete settings.apiVersion;
       test.invalid({}, settings);
     });
 
