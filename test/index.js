@@ -17,8 +17,8 @@ describe('Iron IO v2', function(){
     settings = {
       projectId: '534bf145c629690009000039',
       token: 'uwa4ZE1ykvC5aHgsrkC2HAPJw2o',
-      endpoint: 'https://mq-aws-us-east-1.iron.io:443',
-      apiVersion: '1'
+      endpoint: 'https://mq-aws-eu-west-1-1.iron.io:443',
+      apiVersion: '3'
     };
     iron = new IronIO(settings);
     test = Test(iron, __dirname);
@@ -108,7 +108,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .track(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -126,7 +126,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .identify(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -144,7 +144,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .screen(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -162,7 +162,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .page(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -180,7 +180,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .alias(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
@@ -198,7 +198,7 @@ describe('Iron IO v2', function(){
         .set(settings)
         .group(msg)
         .sends(message(msg))
-        .expects(200, done);
+        .expects(201, done);
     });
 
     it('should error on invalid creds', function(done){
