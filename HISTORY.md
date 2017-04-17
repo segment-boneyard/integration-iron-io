@@ -1,4 +1,11 @@
 
+2.0.1 / 2017-04-17
+==================
+
+  * Bump int-tester version to 2.x (#23)
+  * Merge pull request #22 from segment-integrations/fix-npm-publish
+  * fix npm publish
+
 2.0.0 / 2017-03-16
 ==================
 
